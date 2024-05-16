@@ -1,14 +1,13 @@
 package com.mohammedalaa.domain.modelprovider
 
-import com.mohammedalaa.domain.model.ResultModel
+import com.mohammedalaa.domain.model.NewsModel
 
 val newsList = listOf(
     // Result
-    ResultModel(
+    NewsModel(
         // String
         adxKeywords = "Stormy Daniels",
         // String
-        column = "Opinion",
         // String
         section = "Opinion",
         // String
@@ -51,11 +50,10 @@ val newsList = listOf(
         // Int
         etaId = 0,
     ),
-    ResultModel(
+    NewsModel(
         // String
         adxKeywords = "Stormy Daniels",
         // String
-        column = "Opinion",
         // String
         section = "Opinion",
         // String
@@ -98,11 +96,10 @@ val newsList = listOf(
         // Int
         etaId = 0,
     ),
-    ResultModel(
+    NewsModel(
         // String
         adxKeywords = "Stormy Daniels",
         // String
-        column = "Opinion",
         // String
         section = "Opinion",
         // String
@@ -145,11 +142,10 @@ val newsList = listOf(
         // Int
         etaId = 0,
     ),
-    ResultModel(
+    NewsModel(
         // String
         adxKeywords = "Stormy Daniels",
         // String
-        column = "Opinion",
         // String
         section = "Opinion",
         // String

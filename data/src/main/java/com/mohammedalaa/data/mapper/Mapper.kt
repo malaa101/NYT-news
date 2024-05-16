@@ -3,17 +3,17 @@ package com.mohammedalaa.data.mapper
 import com.mohammedalaa.data.model.MediaEntity
 import com.mohammedalaa.data.model.MediaMetadataEntity
 import com.mohammedalaa.data.model.NewsResponseEntity
-import com.mohammedalaa.data.model.ResultEntity
+import com.mohammedalaa.data.model.NewsEntity
 import com.mohammedalaa.domain.model.MediaModel
 import com.mohammedalaa.domain.model.MediaMetadataModel
 import com.mohammedalaa.domain.model.NewsResponseModel
-import com.mohammedalaa.domain.model.ResultModel
+import com.mohammedalaa.domain.model.NewsModel
 
 
 fun NewsResponseEntity.toDomain(): NewsResponseModel = NewsResponseModel(
     copyright=copyright,
     numResults=numResults,
-    results = results.toDomain(),
+    results = results.toNewsDomain(),
     status = status
 )
 
@@ -27,13 +27,13 @@ fun MediaMetadataEntity.toDomain(): MediaMetadataModel = MediaMetadataModel(
 fun MediaEntity.toDomain(): MediaModel = MediaModel(
     approvedForSyndication = approvedForSyndication,
     caption = caption,
-    mediaMetadata = mediaMetadata.toDomain(),
+    mediaMetadata = mediaMetadata.toMediaMetadataDomain(),
     subtype = subtype,
     type = type,
     copyright = copyright
 )
 
-fun ResultEntity.toDomain(): ResultModel= ResultModel(
+fun NewsEntity.toDomain(): NewsModel= NewsModel(
     abstract = abstract,
     byline = byline,
     desFacet = desFacet,
@@ -48,17 +48,16 @@ fun ResultEntity.toDomain(): ResultModel= ResultModel(
     url = url,
     id = id ,
     assetId = assetId,
-    media = media.toDomain(),
+    media = media.toMediaDomain(),
     etaId = etaId,
     nytdsection = nytdsection,
     adxKeywords = adxKeywords,
-    column = column,
     source = source,
     type = type,
     updated = updated,
 )
 
-fun List<ResultEntity>.toDomain(): List<ResultModel> = map { it.toDomain() }
-fun List<MediaMetadataEntity>.toDomain(): List<MediaMetadataModel> = map { it.toDomain() }
-fun List<MediaEntity>.toDomain(): List<MediaModel> = map { it.toDomain() }
+fun List<NewsEntity>.toNewsDomain(): List<NewsModel> = map { it.toDomain() }
+fun List<MediaMetadataEntity>.toMediaMetadataDomain(): List<MediaMetadataModel> = map { it.toDomain() }
+fun List<MediaEntity>.toMediaDomain(): List<MediaModel> = map { it.toDomain() }
 

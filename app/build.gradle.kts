@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.hilt.android)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -14,6 +16,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -51,14 +54,20 @@ android {
 
 dependencies {
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
+    api(project(":domain"))
+    implementation(project(":navigation"))
+    implementation(project(":designsystem"))
+    implementation(project(":core"))
+    implementation(libs.hilt.android)
+    implementation(project(":data"))
+    "ksp" (libs.hilt.android.compiler)
+    implementation(libs.androidx.material3.android)
+    implementation(libs.androidx.material3.window.android)
+    implementation(libs.accomponist.adaptive)
+    implementation(libs.kotlinx.collections.immutable)
+    implementation("androidx.multidex:multidex:2.0.1")
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

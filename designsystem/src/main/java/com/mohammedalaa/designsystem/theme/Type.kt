@@ -1,4 +1,4 @@
-package com.mohammedalaa.nyt_news.ui.theme
+package com.mohammedalaa.designsystem.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

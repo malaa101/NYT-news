@@ -1,4 +1,4 @@
-package com.mohammedalaa.nyt_news.ui.theme
+package com.mohammedalaa.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 
