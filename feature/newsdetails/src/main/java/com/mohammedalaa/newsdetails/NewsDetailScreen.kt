@@ -14,13 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.mohammedalaa.core.base.BaseRoute
-import com.mohammedalaa.core.use
-import com.mohammedalaa.designsystem.preview.ThemePreviews
 import com.mohammedalaa.domain.model.NewsModel
 
 @Composable
