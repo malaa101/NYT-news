@@ -13,8 +13,8 @@ import com.mohammedalaa.navigation.Destinations
 import com.mohammedalaa.navigation.ext.parcelableData
 import com.mohammedalaa.designsystem.util.ContentType
 import com.mohammedalaa.navigation.MainContract
-import com.mohammedalaa.newsdetails.MarketDetailRoute
-import com.mohammedalaa.newslist.MarketListRoute
+import com.mohammedalaa.newsdetails.NewsDetailRoute
+import com.mohammedalaa.newslist.NewsListRoute
 import kotlinx.collections.immutable.PersistentList
 
 fun NavGraphBuilder.newsList(
@@ -35,13 +35,13 @@ fun NavGraphBuilder.newsList(
 
             ContentType.DUAL_PANE -> {
                 val newsItem =
-                    entry.parcelableData<NewsModel>(Destinations.MarketDetailScreen().newsItem)
+                    entry.parcelableData<NewsModel>(Destinations.NewsDetailScreen().newsItem)
                         ?: uiState.newsItem
                 ListWithDetailScreen(
                     displayFeatures = displayFeature,
                     newsItem = newsItem,
                     uiState = uiState,
-                    onMarketSelected = onNewsSelected,
+                    onNewsSelected = onNewsSelected,
                     closeDetailScreen = closeDetailScreen,
                     contentType = contentType,
                 )
@@ -61,11 +61,11 @@ fun SingleListScreen(
         BackHandler {
             closeDetailScreen()
         }
-        MarketDetailRoute(
+        NewsDetailRoute(
             newsItem = uiState.newsItem,
         )
     } else {
-        MarketListRoute(
+        NewsListRoute(
             onNavigateToDetailScreen = { mewsItem ->
                 onNewsSelected?.invoke(mewsItem, contentType)
             },
@@ -84,13 +84,13 @@ fun ListWithDetailScreen(
     uiState: MainContract.State,
     contentType: ContentType,
     closeDetailScreen: () -> Unit,
-    onMarketSelected: ((NewsModel, ContentType) -> Unit)? = null,
+    onNewsSelected: ((NewsModel, ContentType) -> Unit)? = null,
 ) {
     TwoPane(
         first = {
-            MarketListRoute(
-                onNavigateToDetailScreen = { market ->
-                    onMarketSelected?.invoke(market, contentType)
+            NewsListRoute(
+                onNavigateToDetailScreen = { newsItem ->
+                    onNewsSelected?.invoke(newsItem, contentType)
                 },
                 isDetailOnlyOpen = uiState.isDetailOnlyOpen,
                 newsItem = uiState.newsItem,
@@ -99,7 +99,7 @@ fun ListWithDetailScreen(
             )
         },
         second = {
-            MarketDetailRoute(
+            NewsDetailRoute(
                 newsItem = newsItem,
             )
         },

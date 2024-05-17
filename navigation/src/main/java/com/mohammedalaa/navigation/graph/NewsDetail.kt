@@ -9,13 +9,13 @@ import com.mohammedalaa.domain.model.NewsModel
 import com.mohammedalaa.navigation.Destinations
 import com.mohammedalaa.navigation.MainContract
 import com.mohammedalaa.navigation.ext.parcelableData
-import com.mohammedalaa.newsdetails.MarketDetailRoute
+import com.mohammedalaa.newsdetails.NewsDetailRoute
 
 fun NavGraphBuilder.newsDetail(
     uiState: MainContract.State,
 ) {
     composable(
-        route = Destinations.MarketDetailScreen().route,
+        route = Destinations.NewsDetailScreen().route,
         enterTransition = {
             slideIntoContainer(
                 animationSpec = tween(300, easing = EaseIn),
@@ -29,9 +29,9 @@ fun NavGraphBuilder.newsDetail(
             )
         },
     ) { entry ->
-        val newsItem = entry.parcelableData<NewsModel>(Destinations.MarketDetailScreen().newsItem)
+        val newsItem = entry.parcelableData<NewsModel>(Destinations.NewsDetailScreen().newsItem)
             ?: uiState.newsItem as NewsModel
-        MarketDetailRoute(
+        NewsDetailRoute(
             newsItem = newsItem,
         )
     }

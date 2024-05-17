@@ -186,7 +186,7 @@ fun ShimmerNewsList() {
 
 @ThemePreviews
 @Composable
-private fun ShimmerMarketItemPrev() {
+private fun ShimmerNewsItemPrev() {
     NYTnewsTheme {
         Surface {
             ShimmerNewsItem()
